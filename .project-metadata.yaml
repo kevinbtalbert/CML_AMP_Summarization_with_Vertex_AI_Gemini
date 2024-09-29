@@ -1,5 +1,5 @@
 name: Document Summarization with Gemini from Vertex AI
-description: Summarize documents and text using Google's Gemini models from the Vertex AI Model Garden. 
+description: Summarize documents and text using Google's Gemini models from the Vertex AI Model Garden. Suggested runtime is JupyterLab, Python 3.11, Standard Edition with lastest version.
 author: Cloudera, Inc.
 specification_version: 1.0
 prototype_version: 1.0
