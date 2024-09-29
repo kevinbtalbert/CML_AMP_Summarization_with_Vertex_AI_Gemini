@@ -5,6 +5,12 @@ specification_version: 1.0
 prototype_version: 1.0
 date: "2024-09-29"
 
+environment_variables:
+  GOOGLE_API_KEY:
+    default: ""
+    description: "Google API Key with access to Gemini models"
+    required: true
+
 runtimes:
   - editor: JupyterLab
     kernel: Python 3.11
@@ -13,7 +19,7 @@ runtimes:
 tasks:
   - type: run_session
     name: Install Dependencies
-    script: 0_session-install-dependencies/install-dependencies.py
+    script: 1_session-install-dependencies/install-dependencies.py
     short_summary: Install Requirements and Dependencies
     kernel: python3
     cpu: 2
