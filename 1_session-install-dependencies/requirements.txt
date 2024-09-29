@@ -1,0 +1,8 @@
+pydub
+streamlit
+PyPDF2
+python-docx
+google-cloud-aiplatform
+llama_index
+google.generativeai
+llama-index-embeddings-huggingface
