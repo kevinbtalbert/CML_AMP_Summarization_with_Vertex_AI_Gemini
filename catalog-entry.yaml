@@ -14,9 +14,8 @@ entries:
       - Gemini
       - Vertex AI
       - Document Summarization
-      - FAISS
+      - LlamaIndex
       - PDF
       - NLP
     git_url: 'https://github.com/kevinbtalbert/CML_AMP_Summarization_with_Vertex_AI_Gemini.git'
     is_prototype: true
-    
