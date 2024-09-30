@@ -66,7 +66,7 @@ From the marketplace entry above, click "Manage" and navigate to "Credentials". 
 ![](/assets/create-api-key.png)
 
 #### 3. Enable Gemini Model
-Gemini will need to be enabled for the Project space you created the API key in above. If this has not been done already, 
+Gemini will need to be enabled for the Project space you created the API key in above. If this has not been done already, you should do this for the project the API key resides in. The UI will also share an error message with where to enable the model if required.
 
 #### Recommended Runtime
 JupyterLab - Python 3.11 - Nvidia GPU - 2024.05

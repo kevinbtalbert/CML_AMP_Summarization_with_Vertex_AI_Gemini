@@ -172,7 +172,7 @@ def main():
         content_models = get_content_generation_models()
 
 
-    # Reordered tabs: 1. Summarize from Text Input, 2. Summarize from Doc Library, 3. Manage Vector Store, 4. About
+    # Tabs: 1. Summarize from Text Input, 2. Summarize from Doc Library, 3. Manage Vector Store, 4. About
     tab1, tab2, tab3, tab4 = st.tabs(["Summarize from Text Input", "Summarize from Doc Library", "Manage Vector Store", "About"])
 
     # Tab for summarizing from text input
