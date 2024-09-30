@@ -205,7 +205,7 @@ def main():
                     )
 
                     # Generate content
-                    answer = model.generate_content(prompt)
+                    answer = model.generate_content(prompt, generation_config=generation_config)
                     answer_text = "".join([response.text for response in answer])
 
                     # Display the AI-generated answer
@@ -263,7 +263,7 @@ def main():
                     )
 
                     # Generate content
-                    answer = model.generate_content(prompt)
+                    answer = model.generate_content(prompt, generation_config=generation_config)
                     answer_text = "".join([response.text for response in answer])
 
                     # Display the AI-generated answer
