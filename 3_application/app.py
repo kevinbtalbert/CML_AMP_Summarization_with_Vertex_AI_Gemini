@@ -155,7 +155,7 @@ def delete_document_from_index(filename):
     rebuild_index()
 
 def main():
-    st.title("RAG with Gemini")
+    st.title("Document and Text Summarization with Gemini from Vertex AI")
 
     # Only load index if it exists
     index = create_or_load_index()
