@@ -154,17 +154,26 @@ def delete_document_from_index(filename):
 
 def main():
     st.title("Document and Text Summarization with Gemini from Vertex AI")
-
+    
     # Only load index if it exists
     index = create_or_load_index()
     if index:
-        st.write(f"Index loaded. Number of nodes: {len(index.docstore.docs)}")
+        # Count the number of nodes in the index
+        node_count = len(index.docstore.docs)
+
+        # Extract filenames from metadata and count unique filenames
+        filenames = [doc.metadata.get("filename") for doc in index.docstore.docs.values()]
+        unique_documents_count = len(set(filenames))
+
+        # Display the index status
+        st.write(f"Index loaded. Number of documents: {unique_documents_count}, Number of nodes: {node_count}")
 
         # Fetch models for dropdown selection
         content_models = get_content_generation_models()
 
-    # Reordered tabs: 1. Summarize from Text Input, 2. Summarize from Doc Library, 3. Manage Vector Store
-    tab1, tab2, tab3 = st.tabs(["Summarize from Text Input", "Summarize from Doc Library", "Manage Vector Store"])
+
+    # Reordered tabs: 1. Summarize from Text Input, 2. Summarize from Doc Library, 3. Manage Vector Store, 4. About
+    tab1, tab2, tab3, tab4 = st.tabs(["Summarize from Text Input", "Summarize from Doc Library", "Manage Vector Store", "About"])
 
     # Tab for summarizing from text input
     with tab1:
@@ -306,6 +315,15 @@ def main():
                             st.warning("Cannot delete the last document in the vector store.")
         else:
             st.info("No PDFs currently in the vector store.")
+
+    with tab4:
+        st.header("About this AMP")
+        st.write("This application is designed to make document summarization a breeze by leveraging Google's Gemini LLM from the Vertex AI Model Garden.")
+        st.write("There are two modes of summarization supported: text summarization (paste) and document summarization (upload).")
+        st.write("You can upload documents through the 'Manage Vector Store' tab above, or by the CML Job 'Load Documents in docs folder to LlamaIndex vector store'.", divider="gray")
+        st.write("Several Gemini models have been enabled by default and more can be added from the ALLOWED MODELS parameter in the application script.")
+        st.write("Additionally, the temperature and max token count parameters can be leveraged to adjust the randomness and length of the response, respectively.")
+
 
 if __name__ == "__main__":
     main()
