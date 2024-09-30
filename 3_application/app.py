@@ -69,13 +69,13 @@ def create_or_load_index():
     return index
 
 def rebuild_index():
-    """Rebuild the index from the current contents of the ./docs directory."""
+    """Rebuild the index from all the documents in the ./docs directory."""
     if not os.path.exists(DATA_DIR):
         st.error("Data directory does not exist.")
         return
-
+    
     # Initialize an empty list to hold all documents
-    documents = []
+    all_documents = []
 
     # Loop through each PDF file in the directory
     for pdf_file in os.listdir(DATA_DIR):
@@ -83,38 +83,26 @@ def rebuild_index():
             # Construct full path to the file
             file_path = os.path.join(DATA_DIR, pdf_file)
             
-            # # Read content of the file using PyPDF2
-            # with open(file_path, "rb") as file:
-            #     pdf_reader = PyPDF2.PdfReader(file)
-            #     content = ""
-            #     for page_num in range(len(pdf_reader.pages)):
-            #         page = pdf_reader.pages[page_num]
-            #         text = page.extract_text()
-            #         if text:
-            #             content += text
-            
-            # Check if content is valid
-
-            # Create a Document object
-            # doc = Document(content=content, metadata={"filename": pdf_file})
-            # Load the new document for indexing
+            # Load the document for indexing
             reader = SimpleDirectoryReader(input_files=[file_path], file_metadata=get_metadata)
-            doc = reader.load_data()
-            documents.append(doc)
+            new_documents = reader.load_data()
+    
+            # Debugging: print document contents and metadata
+            for doc in new_documents:
+                print(f"[DEBUG] Loaded new document '{doc.metadata['filename']}' with content length: {len(doc.text)} characters")
+            
+            all_documents.extend(new_documents)
 
-        else:
-            st.warning(f"No content extracted from '{pdf_file}'. Skipping.")
-
-    if not documents:
+    if not all_documents:
         st.error("No valid documents found for indexing.")
         return
 
-    # Create a new index with the collected documents
-    index = VectorStoreIndex.from_documents(documents, embed_model=embed_model)
+    # Rebuild the index with all documents found in the directory
+    index = VectorStoreIndex.from_documents(all_documents, embed_model=embed_model)
     
     # Persist the new index to storage
     index.storage_context.persist(persist_dir=PERSIST_DIR)
-    st.success("Rebuilt the vector store index successfully.")
+    st.success("Rebuilt the vector store index successfully with all documents.")
 
 def add_document_to_index(uploaded_file):
     """Add a new document to the docs folder and add it to the index."""
@@ -135,8 +123,18 @@ def add_document_to_index(uploaded_file):
     # Load the existing index or create a new one
     index = create_or_load_index()
     
-    # If an index already exists, add the new documents
-    index = VectorStoreIndex.from_documents(new_documents, embed_model=embed_model)
+    # Collect all documents: from existing index (if any) and new documents
+    if index:
+        # Get existing documents as Document objects from the index
+        existing_docs = [Document(text=node.text, metadata=node.metadata) for node in index.docstore.docs.values()]
+    else:
+        existing_docs = []
+
+    # Combine existing and new documents
+    all_documents = existing_docs + new_documents
+    
+    # Rebuild the index with all documents
+    index = VectorStoreIndex.from_documents(all_documents, embed_model=embed_model)
     
     # Persist the index with the new document added
     index.storage_context.persist(persist_dir=PERSIST_DIR)

@@ -83,11 +83,12 @@ This AMP requires pip packages and models from huggingface. Depending on your CM
 - pypi.org
 - pythonhosted.org
 - huggingface.co
+Additionally, it will require access to Google's Vertex AI API. Please ensure the endpoint you leverage for Gemini is whitelisted as well.
 
 ## Technologies Used
 #### Models and Utilities
 - [Gemini]()
-     - LLM Model from Google's Vertex AI Model Garden
+     - LLM Model from Google's Vertex AI Model Garden 
 - [all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2)
      - Vector Embeddings Generation Model
 - [Hugging Face transformers library](https://pypi.org/project/transformers/)
