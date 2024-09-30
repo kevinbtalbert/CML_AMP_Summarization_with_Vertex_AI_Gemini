@@ -3,11 +3,93 @@ Summarize documents and text using Google's Gemini models from the Vertex AI Mod
 
 ![](/assets/readme-header.png)
 
-## 2 Modes of Summarization
+## Architecture and Overview
+
+### 2 Modes of Summarization
 This AMP supports two modes of document summarization. 
 
 
-## Supported Gemini Models
+### Supported Gemini Models
 
 
-## Setup your API Key
+## Deployment
+
+### Getting a Google API Key with Access to Gemini
+
+TO DO DOCUMENT STEPS HERE
+
+### AMP Deployment Methods
+There are two ways to launch this prototype on CML:
+
+1. **From Prototype Catalog** - Navigate to the Prototype Catalog on a CML workspace, select the "Document Summarization with Gemini from Vertex AI" tile, click "Launch as Project", click "Configure Project"
+
+2. **As ML Prototype** - In a CML workspace, click "New Project", add a Project Name, select "ML Prototype" as the Initial Setup option, copy in the [repo URL](https://github.com/cloudera/CML_AMP_Summarization_with_Vertex_AI_Gemini), click "Create Project", click "Configure Project"
+
+
+## Requirements
+
+### Setup API Key with Access to Gemini
+
+#### 1. Enable Vertex AI API
+If you have not already, navigate to the [Vertex AI Marketplace](https://console.cloud.google.com/marketplace/product/google/aiplatform.googleapis.com) and enable the Vertex AI Platform API from your Marketplace. Once complete, your entry should show like below.
+
+![](/assets/enable-vertex-ai-marketplace.png)
+
+#### 2. Generate API Key
+From the marketplace entry above, click "Manage" and navigate to "Credentials". Here you will click "Create Credentials" and save the API key value which appears (we will use this as an environment variable when deploying the AMP). 
+
+![](/assets/select-credentials.png)
+
+![](/assets/select-credentials-dropdown.png)
+
+![](/assets/create-api-key.png)
+
+#### 3. Enable Gemini Model
+Gemini will need to be enabled for the Project space you created the API key in above. If this has not been done already, 
+
+#### Recommended Runtime
+JupyterLab - Python 3.11 - Nvidia GPU - 2024.05
+
+#### Resource Requirements
+This AMP creates the following workloads with resource requirements:
+- CML Session: `2 CPU, 8GB MEM`
+- CML Jobs: `2 CPU, 8GB MEM`
+- CML Application: `2 CPU, 8GB MEM`
+
+#### External Resources
+This AMP requires pip packages and models from huggingface. Depending on your CML networking setup, you may need to whitelist some domains:
+- pypi.python.org
+- pypi.org
+- pythonhosted.org
+- huggingface.co
+
+## Technologies Used
+#### Models and Utilities
+- [Gemini]()
+     - LLM Model from Google's Vertex AI Model Garden
+- [all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2)
+     - Vector Embeddings Generation Model
+- [Hugging Face transformers library](https://pypi.org/project/transformers/)
+#### Vector Store
+- [Llama Index](https://docs.llamaindex.ai/en/stable/module_guides/indexing/vector_store_index/)
+#### Chat Frontend
+- [Streamlit](https://github.com/streamlit)
+
+## Deploying on CML
+There are two ways to launch this prototype on CML:
+
+1. **From Prototype Catalog** - Navigate to the Prototype Catalog on a CML workspace, select the "Intelligent QA Chatbot with NiFi, Pinecone, and Llama2" tile, click "Launch as Project", click "Configure Project"
+
+2. **As ML Prototype** - In a CML workspace, click "New Project", add a Project Name, select "ML Prototype" as the Initial Setup option, copy in the [repo URL](https://github.com/cloudera/CML_AMP_Intelligent-QA-Chatbot-with-NiFi-Pinecone-and-Llama2), click "Create Project", click "Configure Project"
+
+
+## The Fine Print
+
+All the components of the application (knowledge base, context retrieval, prompt enhancement LLM) are running within CDF and CML. This application does not call any external model APIs nor require any additional training of an LLM. The knowledge base is generated using the user-passed sitemaps in NiFi (CDF) or Python, depending on the user preference.
+
+IMPORTANT: Please read the following before proceeding.  This AMP includes or otherwise depends on certain third party software packages.  Information about such third party software packages are made available in the notice file associated with this AMP.  By configuring and launching this AMP, you will cause such third party software packages to be downloaded and installed into your environment, in some instances, from third parties' websites.  For each third party software package, please see the notice file and the applicable websites for more information, including the applicable license terms.
+
+If you do not wish to download and install the third party software packages, do not configure, launch or otherwise use this AMP.  By configuring, launching or otherwise using the AMP, you acknowledge the foregoing statement and agree that Cloudera is not responsible or liable in any way for the third party software packages.
+
+
+Refer to the Project **NOTICE** and **LICENSE** files in the root directory. Author: Cloudera Inc.
