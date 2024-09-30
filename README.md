@@ -33,17 +33,19 @@ ALLOWED_MODELS = [
 
 ## Deployment
 
-### Getting a Google API Key with Access to Gemini
-
-TO DO DOCUMENT STEPS HERE
-
 ### AMP Deployment Methods
 There are two ways to launch this prototype on CML:
 
-1. **From Prototype Catalog** - Navigate to the Prototype Catalog on a CML workspace, select the "Document Summarization with Gemini from Vertex AI" tile, click "Launch as Project", click "Configure Project"
+1. **From Prototype Catalog** - Navigate to the Prototype Catalog on a CML workspace, select the "Document Summarization with Gemini from Vertex AI" tile, click "Launch as Project", click "Configure Project".
 
-2. **As ML Prototype** - In a CML workspace, click "New Project", add a Project Name, select "ML Prototype" as the Initial Setup option, copy in the [repo URL](https://github.com/cloudera/CML_AMP_Summarization_with_Vertex_AI_Gemini), click "Create Project", click "Configure Project"
+2. **As ML Prototype** - In a CML workspace, click "New Project", add a Project Name, select "ML Prototype" as the Initial Setup option, copy in the [repo URL](https://github.com/cloudera/CML_AMP_Summarization_with_Vertex_AI_Gemini), click "Create Project", click "Configure Project".
 
+### AMP Deployment
+In both cases, you will need to specify the `GOOGLE_API_KEY` *(steps in next section on how to create this)* which enables the connection between Google's Vertex AI API and the Application in CML.
+
+![](/assets/screenshot-setup-amp.png)
+
+![](/assets/screenshot-amp-creation-script.png)
 
 ## Requirements
 
