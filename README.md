@@ -6,10 +6,29 @@ Summarize documents and text using Google's Gemini models from the Vertex AI Mod
 ## Architecture and Overview
 
 ### 2 Modes of Summarization
-This AMP supports two modes of document summarization. 
+This AMP supports two modes of document summarization: text-based summarization and document-based summarization. For document summarization, upload and remove documents in the 'Manage Vector Store' tab or through the CML Job 'Load Documents in docs folder to LlamaIndex vector store'. As is documented in the Supported Gemini Models below, there are several Gemini models to choose from depending on the desired output. Max Output Tokens and Temperature may be adjusted for lengthier responses and level of randomness in response, respectively.
 
+#### Text-based Summarization
+![](/assets/screenshot-summarize-from-text-input.png)
+
+#### Document-based Summarization
+![](/assets/screenshot-summarize-from-doc-library.png)
+
+![](/assets/screenshot-manage-vector-store.png)
 
 ### Supported Gemini Models
+Several Gemini models are tested and supported and more may be added by adjusting the below parameter in the `3_application/app.py` file:
+```
+ALLOWED_MODELS = [
+    "models/gemini-1.0-pro-latest",
+    "models/gemini-1.0-pro",
+    "models/gemini-pro",
+    "models/gemini-1.0-pro-001",
+    "models/gemini-1.5-pro-001",
+    "models/gemini-1.5-pro-latest"
+]
+```
+![](/assets/screenshot-multiple-models.png)
 
 
 ## Deployment
