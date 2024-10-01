@@ -153,6 +153,7 @@ def delete_document_from_index(filename):
     rebuild_index()
 
 def main():
+    st.set_page_config(page_title="Document and Text Summarization with Gemini from Vertex AI", layout="wide")
     st.title("Document and Text Summarization with Gemini from Vertex AI")
     
     # Only load index if it exists
