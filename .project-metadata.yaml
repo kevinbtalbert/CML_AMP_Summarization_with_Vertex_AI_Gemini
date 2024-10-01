@@ -25,14 +25,6 @@ tasks:
     cpu: 2
     memory: 8
 
-  - type: run_session
-    name: Load sample document to LlamaIndex vector store
-    script: 2_job_load-to-vector-db/load-to-vector-db.py
-    short_summary: Load sample document to LlamaIndex vector store
-    kernel: python3
-    cpu: 2
-    memory: 4
-
   - type: create_job
     name: Load Documents in docs folder to LlamaIndex vector store
     entity_label: load-docs
@@ -43,6 +35,10 @@ tasks:
     short_summary: Load Documents in docs folder to LlamaIndex vector store (creates embeddings from docs)
     environment:
       TASK_TYPE: CREATE/RUN_JOB
+
+  - type: run_job
+    entity_label: load-docs
+    short_summary: Load Documents in docs folder to LlamaIndex vector store (creates embeddings from docs)
 
   - type: start_application
     name: Doc Summarization with Gemini
