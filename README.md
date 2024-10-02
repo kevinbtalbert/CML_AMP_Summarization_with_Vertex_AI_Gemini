@@ -87,7 +87,7 @@ Additionally, it will require access to Google's Vertex AI API. Please ensure th
 
 ## Technologies Used
 #### Models and Utilities
-- [Gemini]()
+- [Gemini](https://blog.google/technology/ai/google-gemini-ai/)
      - LLM Model from Google's Vertex AI Model Garden 
 - [all-MiniLM-L6-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2)
      - Vector Embeddings Generation Model
@@ -102,7 +102,7 @@ There are two ways to launch this prototype on CML:
 
 1. **From Prototype Catalog** - Navigate to the Prototype Catalog on a CML workspace, select the "Intelligent QA Chatbot with NiFi, Pinecone, and Llama2" tile, click "Launch as Project", click "Configure Project"
 
-2. **As ML Prototype** - In a CML workspace, click "New Project", add a Project Name, select "ML Prototype" as the Initial Setup option, copy in the [repo URL](https://github.com/cloudera/CML_AMP_Intelligent-QA-Chatbot-with-NiFi-Pinecone-and-Llama2), click "Create Project", click "Configure Project"
+2. **As ML Prototype** - In a CML workspace, click "New Project", add a Project Name, select "ML Prototype" as the Initial Setup option, copy in the [repo URL](https://github.com/cloudera/CML_AMP_Summarization_with_Vertex_AI_Gemini), click "Create Project", click "Configure Project"
 
 
 ## The Fine Print
