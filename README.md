@@ -1,5 +1,5 @@
 # Document Summarization with Gemini from Vertex AI
-Summarize documents and text using Google's Gemini models from the Vertex AI Model Garden. 
+This Accelerator for Machine Learning Projects ("AMP") allows users to summarize documents and text using Google's Gemini models from the Vertex AI Model Garden. It provides two summarization modes: text-based and document-based, document management features, and customizable settings for optimizing output.
 
 ![](/assets/readme-header.png)
 
